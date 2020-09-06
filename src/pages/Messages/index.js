@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {DoctorList} from '../../components/molecules';
+import {List} from '../../components/molecules';
 import {DummyDoctor1, DummyDoctor2, DummyDoctor3} from '../../assets';
 import {colors, fonts} from '../../utils';
 import {Gap} from '../../components/atoms';
 
-const Messages = () => {
+const Messages = ({navigation}) => {
   const [profile, setProfile] = useState([
     {
       id: 1,
@@ -34,7 +34,12 @@ const Messages = () => {
         {profile.map((val, index) => {
           return (
             <View key={index}>
-              <DoctorList name={val.name} msg={val.msg} pic={val.profile} />
+              <List
+                name={val.name}
+                msg={val.msg}
+                pic={val.profile}
+                onpress={() => navigation.navigate('Chatting')}
+              />
               <Gap height={16} />
             </View>
           );

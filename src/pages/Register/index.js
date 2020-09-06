@@ -1,9 +1,19 @@
-import React from 'react';
-import {StyleSheet, Text, View, Alert} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, Alert, ScrollView} from 'react-native';
 import {Header, Input, Button, Gap} from '../../components';
 import {colors} from '../../utils/colors';
+import {useForm} from '../../utils/useForm';
 
 const Register = ({navigation}) => {
+  const [form, setForm] = useForm({
+    nama: '',
+    pekerjaan: '',
+    email: '',
+    pass: '',
+  });
+  const onContinue = () => {
+    console.log(form);
+  };
   return (
     <View style={styles.page}>
       <Header
@@ -13,19 +23,35 @@ const Register = ({navigation}) => {
         }}
       />
       <View style={styles.content}>
-        <Gap height={24} />
-        <Input label="Fullname" />
-        <Gap height={24} />
-        <Input label="Pekerjaan" />
-        <Gap height={24} />
-        <Input label="Gmail" />
-        <Gap height={24} />
-        <Input label="Password" />
-        <Gap height={40} />
-        <Button
-          title="Continue"
-          onPress={() => navigation.navigate('UploadPhoto')}
-        />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Gap height={24} />
+          <Input
+            label="Fullname"
+            value={form.nama}
+            onChangeText={val => setForm('nama', val)}
+          />
+          <Gap height={24} />
+          <Input
+            label="Pekerjaan"
+            value={form.pekerjaan}
+            onChangeText={val => setForm('pekerjaan', val)}
+          />
+          <Gap height={24} />
+          <Input
+            label="Email"
+            value={form.email}
+            onChangeText={val => setForm('email', val)}
+          />
+          <Gap height={24} />
+          <Input
+            label="Password"
+            value={form.pass}
+            onChangeText={val => setForm('pass', val)}
+            secureTextEntry={true}
+          />
+          <Gap height={40} />
+          <Button title="Lanjutkan" onPress={onContinue} />
+        </ScrollView>
       </View>
     </View>
   );

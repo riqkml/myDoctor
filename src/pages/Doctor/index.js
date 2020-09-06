@@ -3,7 +3,12 @@ import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import HomeProfile from '../../components/molecules/HomeProfile';
 import {DoctorCategory, RatedDoctor, NewsItem, Gap} from '../../components';
 import {fonts, colors} from '../../utils';
-import {JSONCategoryDoctor} from '../../assets';
+import {
+  JSONCategoryDoctor,
+  DummyDoctor1,
+  DummyDoctor2,
+  DummyDoctor3,
+} from '../../assets';
 
 const Doctor = ({navigation}) => {
   return (
@@ -11,7 +16,7 @@ const Doctor = ({navigation}) => {
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Gap height={30} />
-          <HomeProfile />
+          <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
           <Gap height={30} />
           <Text style={styles.welcome}>
             Mau Konsultasi dengan siapa hari ini ?
@@ -39,9 +44,22 @@ const Doctor = ({navigation}) => {
           <Gap height={30} />
           <Text style={styles.sectionlabel}>Top Rated Doctor</Text>
           <Gap height={16} />
-          <RatedDoctor />
-          <RatedDoctor />
-          <RatedDoctor />
+          <RatedDoctor
+            name="Alexa Rachel"
+            desc="Pediatrician"
+            avatars={DummyDoctor1}
+            onpress={() => navigation.navigate('DoctorProfile')}
+          />
+          <RatedDoctor
+            name="Sunny Frank"
+            desc="Dentist"
+            avatars={DummyDoctor2}
+          />
+          <RatedDoctor
+            name="Poe Minn"
+            desc="Podiatrist"
+            avatars={DummyDoctor3}
+          />
           <Text style={styles.sectionlabel}>Good News</Text>
           <NewsItem />
           <NewsItem />

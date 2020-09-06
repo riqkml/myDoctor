@@ -5,15 +5,35 @@ import {
   DummyDoctor1,
   DummyDoctor3,
   IconContinue,
+  IconProfile,
+  IconLanguage,
+  IconRate,
+  IconHelp,
+  IconStar,
 } from '../../../assets';
 import {fonts, colors} from '../../../utils';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const DoctorList = ({id, name, pic, msg, type, onpress}) => {
+const List = ({id, name, pic, msg, type, onpress, icon}) => {
+  const ICON = () => {
+    if (icon === 'profile') {
+      return <IconProfile />;
+    }
+    if (icon === 'language') {
+      return <IconLanguage />;
+    }
+    if (icon === 'rate') {
+      return <IconRate />;
+    }
+    if (icon === 'help') {
+      return <IconHelp />;
+    }
+    return <IconProfile />;
+  };
   return (
     <TouchableOpacity style={styles.container} onPress={onpress}>
-      <Image source={pic} style={styles.avatar} />
-      <View style={styles.content}>
+      {icon ? <ICON /> : <Image source={pic} style={styles.avatar} />}
+      <View style={styles.content(icon)}>
         <Text style={styles.textHead}>{name}</Text>
         <Text style={styles.textBody}>{msg}</Text>
       </View>
@@ -22,7 +42,7 @@ const DoctorList = ({id, name, pic, msg, type, onpress}) => {
   );
 };
 
-export default DoctorList;
+export default List;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +53,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  content: {flex: 1},
+  content: icon => ({
+    flex: 1,
+    marginLeft: icon ? 16 : 0,
+  }),
   avatar: {
     width: 66,
     height: 66,

@@ -12,7 +12,17 @@ import IconBackWhite from './ic_back_white.svg';
 import IconContinue from './ic-continue.svg';
 import IconSendActive from './send_act.svg';
 import IconSendDisable from './send_dsb.svg';
+import IconProfile from './ic-profile.svg';
+import IconLanguage from './ic-language.svg';
+import IconHelp from './ic-help.svg';
+import IconRate from './ic-star-rate';
+import IconFemale from './ic-female.svg';
+import IconMale from './ic-male.svg';
 export {
+  IconProfile,
+  IconLanguage,
+  IconHelp,
+  IconRate,
   IconBackDark,
   IconCancelPhoto,
   IconAddPhoto,
@@ -23,6 +33,8 @@ export {
   IconMessage,
   IconMessageActive,
   IconStar,
+  IconFemale,
+  IconMale,
   IconBackWhite,
   IconContinue,
   IconSendActive,

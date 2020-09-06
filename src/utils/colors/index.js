@@ -15,6 +15,7 @@ const pallete = {
 export const colors = {
   primary: pallete.blue1,
   secondary: pallete.dark1,
+  borderblue: pallete.blue4,
   cardlight: pallete.blue2,
   cardBlue: pallete.blue4,
   white: 'white',

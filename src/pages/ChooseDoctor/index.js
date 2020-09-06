@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {DummyDoctor1, DummyDoctor2, DummyDoctor3} from '../../assets';
-import {Header, DoctorList, Gap} from '../../components';
+import {Header, List, Gap} from '../../components';
 import {colors} from '../../utils';
 
 const ChooseDoctor = ({navigation}) => {
@@ -37,7 +37,7 @@ const ChooseDoctor = ({navigation}) => {
           {profile.map((val, index) => {
             return (
               <View key={index}>
-                <DoctorList
+                <List
                   name={val.name}
                   msg={val.gender}
                   pic={val.profile}
