@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, Alert, ScrollView} from 'react-native';
 import {Header, Input, Button, Gap} from '../../components';
 import {colors} from '../../utils/colors';
 import {useForm} from '../../utils/useForm';
+import {Fire} from '../../config';
 
 const Register = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -12,7 +13,15 @@ const Register = ({navigation}) => {
     pass: '',
   });
   const onContinue = () => {
-    console.log(form);
+    Fire.auth()
+      .createUserWithEmailAndPassword(form.email, form.pass)
+      .then(success => {
+        console.log('Registrasi Berhasil', success);
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        console.log('Registrasi Gagal', errorMessage);
+      });
   };
   return (
     <View style={styles.page}>
