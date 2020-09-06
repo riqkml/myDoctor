@@ -8,7 +8,7 @@ import ListHospital from './ListHospital';
 import ChatItem from './ChatItem';
 import InputChat from './InputChat';
 import Profile from './Profile';
-
+import Loading from './Loading';
 export {
   Header,
   BottomNavigator,
@@ -20,4 +20,5 @@ export {
   ChatItem,
   InputChat,
   Profile,
+  Loading,
 };

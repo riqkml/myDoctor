@@ -11,6 +11,8 @@ const pallete = {
   grey4: '#EDEEF0',
   grey5: '#B1B7C2',
   white: '#FFFFFF',
+  black1: '#000000',
+  black2: 'rgba(0, 0, 0, 0.5)',
 };
 export const colors = {
   primary: pallete.blue1,
@@ -21,6 +23,7 @@ export const colors = {
   white: 'white',
   black: 'black',
   border: pallete.grey3,
+  loadingBackground: pallete.black2,
   text: {
     default: pallete.dark1,
     secondary: pallete.grey1,
