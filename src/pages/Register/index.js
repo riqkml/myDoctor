@@ -4,7 +4,7 @@ import {Header, Input, Button, Gap, Loading} from '../../components';
 import {colors} from '../../utils/colors';
 import {useForm} from '../../utils/useForm';
 import {Fire} from '../../config';
-
+import {showMessage, hideMessage} from 'react-native-flash-message';
 const Register = ({navigation}) => {
   const [form, setForm] = useForm({
     nama: '',
@@ -19,12 +19,31 @@ const Register = ({navigation}) => {
       .createUserWithEmailAndPassword(form.email, form.pass)
       .then(success => {
         setLoading(false);
-        console.log('Registrasi Berhasil', success);
+        const data = {
+          nama: form.nama,
+          pekerjaan: form.pekerjaan,
+          email: form.email,
+        };
+        Fire.database()
+          .ref('users/' + success.user.uid + '/')
+          .set(data);
+        showMessage({
+          message: 'Berhasil',
+          description: 'Registrasi Berhasil',
+          type: 'success',
+          icon: 'success',
+        });
       })
       .catch(error => {
         setLoading(false);
         const errorMessage = error.message;
         console.log('Registrasi Gagal', errorMessage);
+        showMessage({
+          message: 'Gagal',
+          description: 'Registrasi tidak dapat diproses',
+          type: 'danger',
+          icon: 'danger',
+        });
       });
   };
   return (
