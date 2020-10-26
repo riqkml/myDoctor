@@ -13,14 +13,11 @@ const Button = ({type, title, onPress, icon, cond, disable}) => {
   if (type === 'icon-only') {
     return <IconOnly icon={icon} onPress={onPress} />;
   }
-  if (cond === 'disabled') {
+  if (cond === false) {
     return (
-      <TouchableOpacity
-        style={styles.container(type)}
-        onPress={onPress}
-        disabled>
+      <View style={styles.container(type)} disabled={disable}>
         <Text style={styles.text(type)}>{title}</Text>
-      </TouchableOpacity>
+      </View>
     );
   } else {
     return (
